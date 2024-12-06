@@ -1,6 +1,6 @@
 package a05_abb_p01;
 
-import a04_arvore_binaria_p01.Nodo;
+import a06_abb_p02.NodoABB;
 
 public class ArvoreBinariaBusca {
 	
@@ -49,25 +49,26 @@ public class ArvoreBinariaBusca {
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		montaStringEmPreOrdemEsquerda(raiz, sb, 0);
+		montaStringEmPreOrdemEsquerda(raiz, sb, 0, "R");
 		return sb.toString();
 	}
 
-	private void montaStringEmPreOrdemEsquerda(NodoABB nodo, StringBuilder sb, int nivel) {
+	private void montaStringEmPreOrdemEsquerda(NodoABB nodo, StringBuilder sb, int nivel, String lado) {
 		// Travessia em profundidade, pré-ordem (processamento da raiz antes dos filhos)
 		for (int i = 0; i < nivel; ++i) {
 			sb.append("  ");
 		}
 
+		sb.append("(" + lado + ") ");
 		sb.append(String.valueOf(nodo.getInfo()));
 		sb.append("\n");
 
 		if (nodo.getEsquerdo() != null) {
-			montaStringEmPreOrdemEsquerda(nodo.getEsquerdo(), sb, nivel + 1);
+			montaStringEmPreOrdemEsquerda(nodo.getEsquerdo(), sb, nivel + 1, "E");
 		}
 		 
 		if (nodo.getDireito() != null) {
-			montaStringEmPreOrdemEsquerda(nodo.getDireito(), sb, nivel + 1);
+			montaStringEmPreOrdemEsquerda(nodo.getDireito(), sb, nivel + 1, "D");
 		}
 	}
 	
